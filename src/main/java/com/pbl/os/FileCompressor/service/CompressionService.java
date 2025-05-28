@@ -150,18 +150,14 @@ public class CompressionService {
         }
     }
     private File compressMp3(File inputFile) throws IOException, InterruptedException {
-        // Define paths
         String inputPath = inputFile.getAbsolutePath();
 
-        // Create compressed file in the same directory with "_compressed" suffix
         String compressedFileName = inputFile.getName().replaceAll("\\.mp3$", "") + "_compressed.mp3";
         File compressedFile = new File(BASE_DIR, "compressed.mp3");
         String compressedPath = compressedFile.getAbsolutePath();
 
-        // Path to lame.exe — adjust if needed (you can keep this in resources or config)
         String lamePath = "src/main/resources/lame/lame.exe";
 
-        // Build the command — here 64 kbps bitrate example, you can adjust
         ProcessBuilder pb = new ProcessBuilder(
             lamePath,
             "-b", "64",  // bitrate 64 kbps
@@ -169,12 +165,10 @@ public class CompressionService {
             compressedPath
         );
 
-        // Optional: redirect error and output to your Java process console
         pb.redirectErrorStream(true);
 
         Process process = pb.start();
 
-        // Read and print output (optional for debugging)
         try (var reader = new java.io.BufferedReader(new java.io.InputStreamReader(process.getInputStream()))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -182,14 +176,12 @@ public class CompressionService {
             }
         }
 
-        // Wait for the process to finish
         int exitCode = process.waitFor();
 
         if (exitCode != 0) {
             throw new IOException("LAME compression failed with exit code " + exitCode);
         }
 
-        // Return the compressed file
         return compressedFile;
     }
     private File compressMp4(File inputFile) throws IOException {
@@ -198,7 +190,7 @@ public class CompressionService {
         File compressedFile = new File(BASE_DIR, compressedFileName);
 
         ProcessBuilder builder = new ProcessBuilder(
-            "ffmpeg",  // or full path like "C:/ffmpeg/bin/ffmpeg"
+            "ffmpeg",  
             "-i", inputFile.getAbsolutePath(),
             "-vcodec", "libx264",
             "-crf", "28",
