@@ -28,8 +28,9 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-src\main\java\com\pbl\os\FileCompressor\ImageCompresion
-src\main\java\com\pbl\os\FileCompressor\TextCompression
+src\main\java\com\pbl\os\FileCompressor\ImageCompresion\
+src\main\java\com\pbl\os\FileCompressor\TextCompression\
+src\main\java\com\pbl\os\FileCompressor\MP3Compression\
 
 ### VS Code ###
 .vscode/
