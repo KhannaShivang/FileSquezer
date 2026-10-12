@@ -61,7 +61,7 @@ public class FileController {
     @GetMapping("/download")
     public void downloadCompressedFile(@RequestParam("file") String filename, HttpServletResponse response) throws IOException {
         // Adjust this path depending on where compressed files are saved
-        File file = new File("D:\\PBL\\OperatingSystem\\ResultFile", filename);
+        File file = new File("/app/result", filename);
 
         if (!file.exists()) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "File not found");

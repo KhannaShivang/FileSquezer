@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class DecompressionService {
-    private final String BASE_DIR = "D:\\PBL\\OperatingSystem\\ResultFile";
+    private final String BASE_DIR = "/app/result";
     public File decompressFile(MultipartFile file) {
         File decompressedFile;
         try {

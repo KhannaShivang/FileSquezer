@@ -17,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CompressionService {
-    private final String BASE_DIR = "D:\\PBL\\OperatingSystem\\ResultFile";
+    // private final String BASE_DIR = "D:\\PBL\\OperatingSystem\\ResultFile";
+    private final String BASE_DIR = "/app/result";
     public File compressFile(MultipartFile file) {
         File compressedFile;
         try {
@@ -30,7 +31,7 @@ public class CompressionService {
                 compressedFile = compressImage(inputFile);
             } else if (fileName.endsWith(".mp3")) {
                 compressedFile = compressMp3(inputFile);
-            } else if(fileName.endsWith(".mp4")){
+            } else if(fileName.endsWith(".mp4")||fileName.endsWith(".mkv")){
                 compressedFile = compressMp4(inputFile);
             }
              else {
