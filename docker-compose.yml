@@ -1,0 +1,8 @@
+services:
+  filesqueezer:
+    build:
+      context: .
+    container_name: FileSqueezer
+    restart: always
+    ports:
+    - "8080:8080"
